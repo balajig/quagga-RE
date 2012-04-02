@@ -88,6 +88,7 @@ struct zclient
 #define ZAPI_MESSAGE_NEXTHOP  0x01
 #define ZAPI_MESSAGE_IFINDEX  0x02
 #define ZAPI_MESSAGE_DISTANCE 0x04
+#define ZAPI_MESSAGE_SAFI     0x06
 #define ZAPI_MESSAGE_METRIC   0x08
 
 /* Zserv protocol message header */
