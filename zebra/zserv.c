@@ -763,8 +763,12 @@ zread_ipv4_add (struct zserv *client, u_short length)
   rib->type = stream_getc (s);
   rib->flags = stream_getc (s);
   message = stream_getc (s); 
-  safi = stream_getw (s);
   rib->uptime = time (NULL);
+
+  if (CHECK_FLAG (message, ZAPI_MESSAGE_SAFI))
+    safi = stream_getw (s);
+  else
+    safi = SAFI_UNICAST;
 
   /* IPv4 prefix. */
   memset (&p, 0, sizeof (struct prefix_ipv4));
